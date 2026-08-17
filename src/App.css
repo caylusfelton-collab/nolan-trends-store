@@ -1967,4 +1967,120 @@ img {
     padding: 30px;
   }
 
+}/* =========================================
+   NOLAN TRENDS BURGUNDY ACCENT THEME
+========================================= */
+
+:root {
+  --nolan-burgundy: #7f1d2d;
+  --nolan-burgundy-dark: #641624;
+  --nolan-burgundy-light: #a52a3d;
+}
+
+/* Main buttons */
+
+.shop-button,
+.category-button,
+.all-products-button,
+.checkout-button,
+.modal-add-button {
+  background: var(--nolan-burgundy);
+  border-color: var(--nolan-burgundy);
+}
+
+.shop-button:hover,
+.category-button:hover,
+.all-products-button:hover,
+.checkout-button:hover,
+.modal-add-button:hover {
+  background: var(--nolan-burgundy-dark);
+  border-color: var(--nolan-burgundy-dark);
+}
+
+/* Prices */
+
+.product-info strong,
+.product-modal-price,
+.cart-total strong:last-child {
+  color: var(--nolan-burgundy);
+}
+
+/* Section labels */
+
+.hero-label,
+.category-label,
+.why-label,
+.shop-label,
+.reviews-label,
+.about-label {
+  color: var(--nolan-burgundy);
+}
+
+/* Selected product options */
+
+.color-option.selected,
+.size-option.selected {
+  background: var(--nolan-burgundy);
+  border-color: var(--nolan-burgundy);
+  color: #fff;
+}
+
+/* Option hover */
+
+.color-option:hover,
+.size-option:hover {
+  border-color: var(--nolan-burgundy);
+  color: var(--nolan-burgundy);
+}
+
+/* Filter buttons */
+
+.filter-button.active {
+  background: var(--nolan-burgundy);
+  border-color: var(--nolan-burgundy);
+  color: #fff;
+}
+
+/* Quantity controls */
+
+.quantity-control button:hover {
+  background: var(--nolan-burgundy);
+  border-color: var(--nolan-burgundy);
+  color: #fff;
+}
+
+/* Remove from cart */
+
+.remove-button:hover {
+  color: var(--nolan-burgundy);
+}
+
+/* About Us accents */
+
+.about-value-icon {
+  color: var(--nolan-burgundy-light);
+}
+
+/* Review stars */
+
+.review-stars {
+  color: var(--nolan-burgundy);
+}
+
+/* Links */
+
+.nav a:hover {
+  color: var(--nolan-burgundy);
+}
+
+/* Search focus */
+
+.search-box:focus-within {
+  border-color: var(--nolan-burgundy);
+}
+
+/* Sort dropdown focus */
+
+.sort-container select:focus {
+  border-color: var(--nolan-burgundy);
 }

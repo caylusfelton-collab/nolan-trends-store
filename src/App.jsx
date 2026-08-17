@@ -486,7 +486,7 @@ function App() {
 
         <div className="logo">
           <img
-            src="/logo.png"
+            src="/logo.jpg"
             alt="Nolan Trends Cloth Branding"
           />
         </div>

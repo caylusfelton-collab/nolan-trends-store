@@ -494,7 +494,8 @@ function App() {
         <nav className="nav">
           <a href="#home">Home</a>
           <a href="#categories">Categories</a>
-          <a href="#shop">Shop</a>
+<a href="#about">About Us</a>
+<a href="#shop">Shop</a>
           <a href="#contact">Contact</a>
         </nav>
 
@@ -701,6 +702,92 @@ function App() {
                 add to cart and order through
                 WhatsApp.
               </p>
+            </div>
+
+          </div>
+
+        </section>
+                {/* ABOUT US */}
+
+        <section className="about-section" id="about">
+
+          <div className="about-heading">
+
+            <p className="about-label">
+              GET TO KNOW US
+            </p>
+
+            <h2>
+              ABOUT NOLAN TRENDS
+            </h2>
+
+            <p>
+              Style is more than what you wear.
+              It's how you express yourself.
+            </p>
+
+          </div>
+
+          <div className="about-content">
+
+            <div className="about-text">
+
+              <h3>
+                WEAR YOUR OWN STYLE.
+              </h3>
+
+              <p>
+                Nolan Trends is a modern clothing brand
+                focused on fresh, stylish and comfortable
+                fashion for everyday life.
+              </p>
+
+              <p>
+                From everyday essentials to bold
+                streetwear, we believe fashion should
+                help you express your individuality and
+                feel confident in what you wear.
+              </p>
+
+              <p>
+                Our collection brings together modern
+                looks for men, women and kids, giving
+                everyone the freedom to find a style
+                that feels like their own.
+              </p>
+
+            </div>
+
+            <div className="about-values">
+
+              <div className="about-value">
+                <div className="about-value-icon">✦</div>
+
+                <h3>
+                  OUR MISSION
+                </h3>
+
+                <p>
+                  To make stylish, comfortable and
+                  accessible fashion available for
+                  everyone.
+                </p>
+              </div>
+
+              <div className="about-value">
+                <div className="about-value-icon">★</div>
+
+                <h3>
+                  OUR VISION
+                </h3>
+
+                <p>
+                  To inspire confidence and individuality
+                  through fashion that lets you wear
+                  your own style.
+                </p>
+              </div>
+
             </div>
 
           </div>

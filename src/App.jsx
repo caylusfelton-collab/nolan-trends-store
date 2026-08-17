@@ -502,7 +502,7 @@ function App() {
             </p>
 
             <h2>
-              WEAR YOUR STYLE
+              WEAR YOUR 
               <br />
               <strong>OWN STYLE.</strong>
             </h2>

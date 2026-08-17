@@ -47,7 +47,6 @@ const products = [
     colors: ["Grey", "Black", "Green"],
     sizes: ["M", "L", "XL"],
   },
-
   {
     image: "/images/product-06.jpg",
     name: "Nolan Women's Essential",
@@ -93,7 +92,6 @@ const products = [
     colors: ["Black", "Grey", "Red"],
     sizes: ["S", "M", "L", "XL", "XXL"],
   },
-
   {
     image: "/images/product-11.jpg",
     name: "Nolan Kids Essential",
@@ -139,7 +137,6 @@ const products = [
     colors: ["Black", "White", "Blue"],
     sizes: ["XS", "S", "M", "L"],
   },
-
   {
     image: "/images/product-16.jpg",
     name: "Nolan Streetwear Essential",
@@ -228,6 +225,14 @@ function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [productQuantity, setProductQuantity] = useState(1);
 
+  const [customerDetails, setCustomerDetails] = useState({
+    name: "",
+    phone: "",
+    town: "",
+    address: "",
+    notes: "",
+  });
+
   const [selectedOptions, setSelectedOptions] = useState(() => {
     const options = {};
 
@@ -297,7 +302,8 @@ function App() {
         selectedColor: options.color,
         selectedSize: options.size,
         quantity,
-        cartId: `${product.image}-${options.color}-${options.size}-${Date.now()}`,
+        cartId:
+          `${product.image}-${options.color}-${options.size}-${Date.now()}`,
       };
 
       setCart((currentCart) => [...currentCart, cartProduct]);
@@ -353,7 +359,8 @@ function App() {
   );
 
   const cartTotal = cart.reduce(
-    (total, product) => total + product.price * product.quantity,
+    (total, product) =>
+      total + product.price * product.quantity,
     0
   );
 
@@ -373,6 +380,18 @@ function App() {
   const checkoutOnWhatsApp = () => {
     if (cart.length === 0) return;
 
+    if (
+      !customerDetails.name.trim() ||
+      !customerDetails.phone.trim() ||
+      !customerDetails.town.trim() ||
+      !customerDetails.address.trim()
+    ) {
+      alert(
+        "Please enter your full name, phone number, town/city and delivery address before checking out."
+      );
+      return;
+    }
+
     const order = cart
       .map(
         (product, index) =>
@@ -386,10 +405,19 @@ function App() {
 
     const message =
       `Hello Nolan Trends! 👋\n\n` +
-      `I'd like to place an order:\n\n` +
+      `I'd like to place an order.\n\n` +
+      `CUSTOMER DETAILS\n` +
+      `Name: ${customerDetails.name}\n` +
+      `Phone: ${customerDetails.phone}\n` +
+      `Town/City: ${customerDetails.town}\n` +
+      `Delivery Address: ${customerDetails.address}\n` +
+      (customerDetails.notes.trim()
+        ? `Additional Notes: ${customerDetails.notes}\n`
+        : "") +
+      `\nORDER DETAILS\n` +
       `${order}\n\n` +
-      `Total: KSh ${cartTotal.toLocaleString()}\n\n` +
-      `Please let me know how I can complete the order.`;
+      `TOTAL: KSh ${cartTotal.toLocaleString()}\n\n` +
+      `Please confirm my order and let me know the delivery details.`;
 
     window.open(
       `https://wa.me/254113506421?text=${encodeURIComponent(message)}`,
@@ -422,7 +450,8 @@ function App() {
         .toLowerCase();
 
       const matchesSearch =
-        search === "" || searchableText.includes(search);
+        search === "" ||
+        searchableText.includes(search);
 
       return matchesCategory && matchesSearch;
     })
@@ -502,7 +531,7 @@ function App() {
             </p>
 
             <h2>
-              WEAR YOUR 
+              WEAR YOUR
               <br />
               <strong>OWN STYLE.</strong>
             </h2>
@@ -1380,6 +1409,141 @@ function App() {
 
                 </div>
 
+                {/* CUSTOMER DETAILS */}
+
+                <div className="customer-details">
+
+                  <h3>
+                    DELIVERY DETAILS
+                  </h3>
+
+                  <p className="customer-details-intro">
+                    Please enter your details before
+                    placing your order.
+                  </p>
+
+                  <div className="customer-form">
+
+                    <div className="form-group">
+
+                      <label htmlFor="customer-name">
+                        Full Name *
+                      </label>
+
+                      <input
+                        id="customer-name"
+                        type="text"
+                        placeholder="Enter your full name"
+                        value={customerDetails.name}
+                        onChange={(event) =>
+                          setCustomerDetails(
+                            (current) => ({
+                              ...current,
+                              name: event.target.value,
+                            })
+                          )
+                        }
+                      />
+
+                    </div>
+
+                    <div className="form-group">
+
+                      <label htmlFor="customer-phone">
+                        Phone Number *
+                      </label>
+
+                      <input
+                        id="customer-phone"
+                        type="tel"
+                        placeholder="e.g. 0712 345 678"
+                        value={customerDetails.phone}
+                        onChange={(event) =>
+                          setCustomerDetails(
+                            (current) => ({
+                              ...current,
+                              phone: event.target.value,
+                            })
+                          )
+                        }
+                      />
+
+                    </div>
+
+                    <div className="form-group">
+
+                      <label htmlFor="customer-town">
+                        Town / City *
+                      </label>
+
+                      <input
+                        id="customer-town"
+                        type="text"
+                        placeholder="e.g. Nairobi"
+                        value={customerDetails.town}
+                        onChange={(event) =>
+                          setCustomerDetails(
+                            (current) => ({
+                              ...current,
+                              town: event.target.value,
+                            })
+                          )
+                        }
+                      />
+
+                    </div>
+
+                    <div className="form-group">
+
+                      <label htmlFor="customer-address">
+                        Delivery Address *
+                      </label>
+
+                      <textarea
+                        id="customer-address"
+                        placeholder="Enter your delivery location or address"
+                        rows="3"
+                        value={customerDetails.address}
+                        onChange={(event) =>
+                          setCustomerDetails(
+                            (current) => ({
+                              ...current,
+                              address: event.target.value,
+                            })
+                          )
+                        }
+                      />
+
+                    </div>
+
+                    <div className="form-group">
+
+                      <label htmlFor="customer-notes">
+                        Additional Notes{" "}
+                        <span>(Optional)</span>
+                      </label>
+
+                      <textarea
+                        id="customer-notes"
+                        placeholder="Any special instructions?"
+                        rows="2"
+                        value={customerDetails.notes}
+                        onChange={(event) =>
+                          setCustomerDetails(
+                            (current) => ({
+                              ...current,
+                              notes: event.target.value,
+                            })
+                          )
+                        }
+                      />
+
+                    </div>
+
+                  </div>
+
+                </div>
+
                 <button
                   className="checkout-button"
                   onClick={checkoutOnWhatsApp}
@@ -1396,6 +1560,22 @@ function App() {
         </div>
 
       )}
+
+      {/* FLOATING WHATSAPP CONFIGURE BUTTON */}
+
+      <button
+        className="floating-whatsapp"
+        onClick={openWhatsApp}
+        aria-label="Configure order on WhatsApp"
+      >
+        <span className="floating-whatsapp-icon">
+          💬
+        </span>
+
+        <span className="floating-whatsapp-text">
+          Configure on WhatsApp
+        </span>
+      </button>
 
       {/* FOOTER */}
 
@@ -1421,24 +1601,6 @@ function App() {
         </p>
 
       </footer>
-
-      {/* FLOATING WHATSAPP CONFIGURE BUTTON */}
-
-      <button
-        className="floating-whatsapp"
-        onClick={openWhatsApp}
-        aria-label="Configure your order on WhatsApp"
-      >
-
-        <span className="floating-whatsapp-icon">
-          💬
-        </span>
-
-        <span className="floating-whatsapp-text">
-          Configure Order
-        </span>
-
-      </button>
 
     </div>
   );
